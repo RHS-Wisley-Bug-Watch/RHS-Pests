@@ -41,7 +41,7 @@ other_class_id = train_ds.class_to_idx['Other']
 insect_idx = [i for i, (_, label) in enumerate(train_ds.samples) if label == insect_class_id]
 other_idx  = [i for i, (_, label) in enumerate(train_ds.samples) if label == other_class_id]
 
-# repeat insect 10x
+# repeat insect 10x --- Revisit this
 insect_datasets = [torch.utils.data.Subset(train_ds, insect_idx)] * 10
 other_datasets = [torch.utils.data.Subset(train_ds, other_idx)]
 # Combine with Other once
@@ -49,7 +49,7 @@ balanced_ds = ConcatDataset([*insect_datasets, *other_datasets])
 train_loader = DataLoader(balanced_ds, batch_size=32, shuffle=True)
 test_loader  = DataLoader(test_ds, batch_size=32, shuffle=False)
 
-# freeze pretrained layersd
+# freeze pretrained layers
 model = models.resnet18(pretrained=True)
 for name, param in model.named_parameters():
     if "fc" not in name:
