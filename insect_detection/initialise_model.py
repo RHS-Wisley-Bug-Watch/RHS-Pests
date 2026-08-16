@@ -4,7 +4,7 @@ import torch.optim as optim
 from torchvision import models
 import numpy as np
 
-def create_model(train_ds, device, learning_rate=1e-4):
+def create_model(train_ds, device, learning_rate=1e-4, frozen_layers=True):
     print("Initializing ResNet18 model...")
     
     insect_class_id = train_ds.class_to_idx['Insect']
@@ -16,9 +16,10 @@ def create_model(train_ds, device, learning_rate=1e-4):
 
     model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
     
-    for name, param in model.named_parameters():
-        if "fc" not in name:
-            param.requires_grad = False
+    if frozen_layers:
+        for name, param in model.named_parameters():
+            if "fc" not in name:
+                param.requires_grad = False
 
     model.fc = nn.Linear(model.fc.in_features, 2)
     model = model.to(device)

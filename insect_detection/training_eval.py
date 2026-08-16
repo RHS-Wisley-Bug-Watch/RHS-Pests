@@ -1,17 +1,12 @@
 import torch
 import os
 import numpy as np
-import pandas as pd
-from sklearn.metrics import classification_report
 from PIL import Image, ImageDraw
 import wandb
 
-def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, test_ds, 
-                       insect_class_id, other_class_id, device, threshold, epochs, results_dir):
+def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, test_ds, insect_class_id, other_class_id, device, threshold, epochs, results_dir):
     
-    vis_preds_dir = os.path.join(results_dir, "visual_predictions")
-    os.makedirs(vis_preds_dir, exist_ok=True)
-
+    os.makedirs(results_dir, exist_ok=True)
     print(f"\nStarting training for {epochs} epochs...")
 
     for epoch in range(epochs):
@@ -55,9 +50,6 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
         
         print(f"Epoch {epoch+1}/{epochs} | Train Loss: {train_loss:.4f} | Test Loss: {test_loss:.4f} | Test Acc: {test_acc:.2%}")
 
-        # ==========================================
-        # 2. SEND METRICS TO W&B
-        # ==========================================
         wandb.log({
             "Train Loss": train_loss,
             "Test Loss": test_loss,
@@ -65,23 +57,17 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
             "Epoch": epoch + 1
         })
 
-    # ==========================================
-    # SAVE MODEL WEIGHTS AND SEND TO W&B
-    # ==========================================
+    # --- SAVE WEIGHTS ---
     weights_path = os.path.join(results_dir, "best_model.pth")
     torch.save(model.state_dict(), weights_path)
-    
-    wandb.save(weights_path) 
+    wandb.save(weights_path)
 
-    # ==========================================
-    # VISUAL PREDICTIONS (WITH W&B UPLOAD)
-    # ==========================================
-    print("\nGenerating visual predictions...")
+    # --- UPLOAD VISUAL PREDICTIONS TO W&B ---
+    print("\nUploading visual predictions to Weights & Biases...")
     model.eval()
-    
     wandb_images = [] 
-    
     test_samples = test_ds.samples
+    
     with torch.no_grad():
         batch_idx = 0
         for x, y in test_loader:
@@ -113,10 +99,9 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
                         
                         caption = "CORRECT" if is_correct else "INCORRECT"
                         wandb_images.append(wandb.Image(orig_img, caption=f"{caption}: {label_text}"))
-                        
-                    except Exception as e:
+                    except Exception:
                         pass
             batch_idx += 1
 
     wandb.log({"Test Set Predictions": wandb_images})
-    print("Successfully beamed all metrics and images to the Weights & Biases dashboard")
+    print("Done! Check your W&B dashboard.")
