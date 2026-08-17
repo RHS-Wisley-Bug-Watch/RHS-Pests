@@ -10,14 +10,14 @@ from training_eval import train_and_evaluate
 
 
 EXPERIMENT_CONFIG = {
-    "learning_rate": 1e-4,   # 1e-3 (faster learning) or 1e-5 (slower/cautious)
+    "learning_rate": 1e-3,   # 1e-3 (faster learning) or 1e-5 (slower/cautious)
     "epochs": 25,            # How many learning iterations
     "batch_size": 32,        # How many samples it looks at at once
     "num_augmentations": 6,  # Augmenting only images with bugs in them for balance
     "threshold": 0.5,        # Model confidence for classification
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Improved data ratio, added ROC curve and density plot logging to W&B"
+    "notes": "Changing learning rate. Model 2."
 }
 
 BASE_DIR = os.getcwd()

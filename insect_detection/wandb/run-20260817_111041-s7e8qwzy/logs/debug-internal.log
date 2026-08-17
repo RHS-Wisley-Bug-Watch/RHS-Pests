@@ -1,0 +1,17 @@
+{"time":"2026-08-17T11:10:41.487853+01:00","level":"INFO","msg":"wandb-core"}
+{"time":"2026-08-17T11:10:41.491267+01:00","level":"INFO","msg":"stream: starting","core version":"0.28.2"}
+{"time":"2026-08-17T11:10:41.616008+01:00","level":"INFO","msg":"stream: created new stream","id":"s7e8qwzy"}
+{"time":"2026-08-17T11:10:41.616636+01:00","level":"INFO","msg":"handler: started"}
+{"time":"2026-08-17T11:10:41.616767+01:00","level":"INFO","msg":"stream: started"}
+{"time":"2026-08-17T11:10:41.617228+01:00","level":"INFO","msg":"sender: started"}
+{"time":"2026-08-17T11:10:41.617285+01:00","level":"INFO","msg":"writer: started","stream_id":"s7e8qwzy"}
+{"time":"2026-08-17T11:10:42.618447+01:00","level":"INFO","msg":"filestream: sending request","total_files":1,"console_offset":0,"console_lines":2}
+{"time":"2026-08-17T11:10:42.852064+01:00","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-08-17T11:10:49.288161+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-08-17T11:10:49.288719+01:00","level":"INFO","msg":"filestream: sending request","total_files":2,"console_offset":2,"console_lines":50,"uploaded_len":5,"complete":true,"exit_code":255}
+{"time":"2026-08-17T11:10:49.471202+01:00","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-08-17T11:10:49.471358+01:00","level":"INFO","msg":"stream: finishing up"}
+{"time":"2026-08-17T11:10:49.471417+01:00","level":"INFO","msg":"handler: closed"}
+{"time":"2026-08-17T11:10:49.472516+01:00","level":"INFO","msg":"sender: closed"}
+{"time":"2026-08-17T11:10:49.472547+01:00","level":"INFO","msg":"stream: all finished"}
+{"time":"2026-08-17T11:10:51.47309+01:00","level":"ERROR","msg":"stream: failed to shut down analytics","error":"shutdown errors: [failed to upload metrics: context deadline exceeded: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded context deadline exceeded]"}

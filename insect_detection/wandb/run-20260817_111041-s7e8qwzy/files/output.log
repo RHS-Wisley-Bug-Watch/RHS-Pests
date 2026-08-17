@@ -1,0 +1,52 @@
+
+Starting experiment: LR-0.0001_Aug-6_Thresh-0.5
+Notes: Improved data ratio, added ROC curve and density plot logging to W&B
+
+Loading CSV: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/Filtered_Bugs_Min4_Frac0.55_Gold-x.csv
+Total rows found: 483
+Processing 72 Insect images...
+Traceback (most recent call last):
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 85, in <module>
+    main()
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 60, in main
+    prepare_data(CSV_FILE, SOURCE_DIR, BASE_DIR, EXPERIMENT_CONFIG["num_augmentations"])
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/data_prep.py", line 130, in prepare_data
+    train_ins, test_ins = augment_and_split(insects, 'Insect')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/data_prep.py", line 127, in augment_and_split
+    copied_test = process_and_save(test_files, 'test')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/data_prep.py", line 118, in process_and_save
+    out_img = augmenter(img)
+              ^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/_container.py", line 51, in forward
+    outputs = transform(*inputs)
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/_transform.py", line 51, in forward
+    self._transform(inpt, params) if needs_transform else inpt
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/_misc.py", line 275, in _transform
+    return self._call_kernel(F.to_dtype, inpt, dtype=dtype, scale=self.scale)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/_transform.py", line 35, in _call_kernel
+    return kernel(inpt, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/functional/_utils.py", line 31, in wrapper
+    output = kernel(inpt.as_subclass(torch.Tensor), *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/transforms/v2/functional/_misc.py", line 250, in to_dtype_image
+    return image.to(dtype).mul_(1.0 / _max_value(image.dtype))
+           ^^^^^^^^^^^^^^^
+KeyboardInterrupt
