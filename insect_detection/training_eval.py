@@ -3,8 +3,12 @@ import os
 import numpy as np
 from PIL import Image, ImageDraw
 import wandb
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import roc_curve, auc
 
-def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, test_ds, insect_class_id, other_class_id, device, threshold, epochs, results_dir):
+def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, test_ds, 
+                       insect_class_id, other_class_id, device, threshold, epochs, results_dir):
     
     os.makedirs(results_dir, exist_ok=True)
     print(f"\nStarting training for {epochs} epochs...")
@@ -60,13 +64,17 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
     # --- SAVE WEIGHTS ---
     weights_path = os.path.join(results_dir, "best_model.pth")
     torch.save(model.state_dict(), weights_path)
-    wandb.save(weights_path)
+    wandb.save(weights_path) # Upload to cloud
 
-    # --- UPLOAD VISUAL PREDICTIONS TO W&B ---
-    print("\nUploading visual predictions to Weights & Biases...")
+    # --- UPLOAD VISUAL PREDICTIONS & RAW DATA TO W&B ---
+    print("\nUploading visual predictions and raw data to Weights & Biases...")
     model.eval()
     wandb_images = [] 
     test_samples = test_ds.samples
+    
+    all_true_labels = []
+    all_insect_probs = []
+    all_other_probs = []
     
     with torch.no_grad():
         batch_idx = 0
@@ -83,7 +91,12 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
                     
                     true_name = 'Insect' if true_idx == insect_class_id else 'Other'
                     pred_name = 'Insect' if final_preds[i] == insect_class_id else 'Other'
-                    insect_prob = probs[i][insect_class_id]
+                    insect_prob = float(probs[i][insect_class_id])
+                    other_prob = float(probs[i][other_class_id])
+                    
+                    all_true_labels.append(true_name)
+                    all_insect_probs.append(insect_prob)
+                    all_other_probs.append(other_prob)
                     
                     try:
                         orig_img = Image.open(img_path).convert('RGB')
@@ -104,4 +117,50 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
             batch_idx += 1
 
     wandb.log({"Test Set Predictions": wandb_images})
+    
+    print("Uploading Probability Table...")
+    prob_table = wandb.Table(columns=["True Label", "Insect Probability", "Other Probability"])
+    for t_label, i_prob, o_prob in zip(all_true_labels, all_insect_probs, all_other_probs):
+        prob_table.add_data(t_label, i_prob, o_prob)
+        
+    wandb.log({"Evaluation_Data": prob_table})
+    
+    print("Generating Density Plot and ROC Curve for W&B...")
+    
+    true_insect_scores = [prob for prob, true_lbl in zip(all_insect_probs, all_true_labels) if true_lbl == 'Insect']
+    true_other_scores = [prob for prob, true_lbl in zip(all_insect_probs, all_true_labels) if true_lbl == 'Other']
+
+    plt.figure(figsize=(8, 5))
+    sns.kdeplot(true_insect_scores, color='blue', label='Actual Insects', fill=True, alpha=0.3, linewidth=2)
+    sns.kdeplot(true_other_scores, color='orange', label='Actual Others', fill=True, alpha=0.3, linewidth=2)
+    plt.title('Confidence: Actual Insects vs. Actual Others')
+    plt.xlabel('Predicted probability of being an Insect')
+    plt.ylabel('Density')
+    plt.legend(loc='upper right')
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    
+    wandb.log({"Probability Density": wandb.Image(plt)})
+    plt.close()
+
+    binary_true_labels = [1 if label == 'Insect' else 0 for label in all_true_labels]
+    
+    if len(set(binary_true_labels)) > 1:
+        fpr, tpr, thresholds = roc_curve(binary_true_labels, all_insect_probs)
+        roc_auc = auc(fpr, tpr)
+
+        plt.figure(figsize=(7, 6))
+        plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
+        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive')
+        plt.ylabel('True Positive')
+        plt.title('ROC Curve')
+        plt.legend(loc="lower right")
+        plt.grid(True, linestyle='--', alpha=0.6)
+        
+        wandb.log({"ROC Curve": wandb.Image(plt)})
+        plt.close()
+
     print("Done! Check your W&B dashboard.")
