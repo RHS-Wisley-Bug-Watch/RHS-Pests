@@ -10,14 +10,14 @@ from training_eval import train_and_evaluate
 
 
 EXPERIMENT_CONFIG = {
-    "learning_rate": 1e-2,   # 1e-3 (faster learning) or 1e-5 (slower/cautious)
-    "epochs": 25,            # How many learning iterations
-    "batch_size": 32,        # How many samples it looks at at once
-    "num_augmentations": 6,  # Augmenting only images with bugs in them for balance
-    "threshold": 0.5,        # Model confidence for classification
+    "learning_rate": 1e-3,
+    "epochs": 25,
+    "batch_size": 32,
+    "num_augmentations": 6,
+    "threshold": 0.5,
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Reverting threshold, reducing learning rate (faster). Model 8."
+    "notes": "Model 2 wins!"
 }
 
 BASE_DIR = os.getcwd()
