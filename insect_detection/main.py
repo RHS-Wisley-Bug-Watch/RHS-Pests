@@ -13,11 +13,11 @@ EXPERIMENT_CONFIG = {
     "learning_rate": 1e-3,   # 1e-3 (faster learning) or 1e-5 (slower/cautious)
     "epochs": 25,            # How many learning iterations
     "batch_size": 32,        # How many samples it looks at at once
-    "num_augmentations": 8,  # Augmenting only images with bugs in them for balance
-    "threshold": 0.5,        # Model confidence for classification
+    "num_augmentations": 6,  # Augmenting only images with bugs in them for balance
+    "threshold": 0.25,        # Model confidence for classification
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Retaining learning rate, increasing augmentations. Model 3."
+    "notes": "Retaining learning rate, reverting augmentations, drastically lowering threshold. Model 4."
 }
 
 BASE_DIR = os.getcwd()
