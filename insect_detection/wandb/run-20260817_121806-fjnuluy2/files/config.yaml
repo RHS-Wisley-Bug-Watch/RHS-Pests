@@ -1,0 +1,66 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            jh827t2koachkvgodgeikdruc25ssdw9:
+                codePath: insect_detection/main.py
+                codePathLocal: main.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "1000240963584"
+                        used: "907048271872"
+                email: ernestucheze@gmail.com
+                executable: /Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/bin/python3
+                git:
+                    commit: afc057d56927f3d77c7634dd579215a1e052bd93
+                    remote: https://github.com/RHS-Wisley-Bug-Watch/RHS-Pests.git
+                host: Ernests-MacBook-Pro.local
+                memory:
+                    total: "17179869184"
+                os: macOS-26.5.2-x86_64-i386-64bit
+                program: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py
+                python: CPython 3.12.13
+                root: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection
+                startedAt: "2026-08-17T11:18:06.689184Z"
+                writerId: jh827t2koachkvgodgeikdruc25ssdw9
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 2
+                - 3
+                - 13
+                - 16
+                - 78
+            "4": 3.12.13
+            "5": 0.28.2
+            "12": 0.28.2
+            "13": darwin-x86_64
+architecture:
+    value: ResNet18
+batch_size:
+    value: 32
+epochs:
+    value: 25
+frozen_layers:
+    value: false
+learning_rate:
+    value: 1e-05
+notes:
+    value: Increasing learning rate (slower), retaining augmentations, reverting threshold, unfreezing layers. Model 5.
+num_augmentations:
+    value: 6
+threshold:
+    value: 0.5
