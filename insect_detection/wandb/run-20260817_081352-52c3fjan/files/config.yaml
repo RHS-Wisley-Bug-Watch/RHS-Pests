@@ -1,0 +1,66 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            navdiw0oid7ktgq6hsps5calkqi4svdm:
+                codePath: insect_detection/main.py
+                codePathLocal: main.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "1000240963584"
+                        used: "906838208512"
+                email: ernestucheze@gmail.com
+                executable: /Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/bin/python3
+                git:
+                    commit: a14d58781f1e43785d71614ac42f2440352decd0
+                    remote: https://github.com/RHS-Wisley-Bug-Watch/RHS-Pests.git
+                host: Ernests-MacBook-Pro.local
+                memory:
+                    total: "17179869184"
+                os: macOS-26.5.2-x86_64-i386-64bit
+                program: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py
+                python: CPython 3.12.13
+                root: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection
+                startedAt: "2026-08-17T07:13:52.684097Z"
+                writerId: navdiw0oid7ktgq6hsps5calkqi4svdm
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 2
+                - 3
+                - 13
+                - 16
+                - 78
+            "4": 3.12.13
+            "5": 0.28.2
+            "12": 0.28.2
+            "13": darwin-x86_64
+architecture:
+    value: ResNet18
+batch_size:
+    value: 32
+epochs:
+    value: 25
+frozen_layers:
+    value: true
+learning_rate:
+    value: 0.0001
+notes:
+    value: Improved data ratio, added ROC curve and density plot logging to W&B
+num_augmentations:
+    value: 6
+threshold:
+    value: 0.5

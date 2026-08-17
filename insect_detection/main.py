@@ -17,7 +17,7 @@ EXPERIMENT_CONFIG = {
     "threshold": 0.5,        # Model confidence for classification
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Baseline run. Standard LR, 6 augmentations."
+    "notes": "Improved data ratio, added ROC curve and density plot logging to W&B"
 }
 
 BASE_DIR = os.getcwd()
