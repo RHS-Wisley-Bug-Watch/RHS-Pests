@@ -17,7 +17,7 @@ EXPERIMENT_CONFIG = {
     "threshold": 0.6,        # Model confidence for classification
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Iincreasing threshold slightly. Model 7."
+    "notes": "Increasing threshold slightly. Model 7."
 }
 
 BASE_DIR = os.getcwd()
