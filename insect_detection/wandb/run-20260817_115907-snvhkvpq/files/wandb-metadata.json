@@ -1,0 +1,28 @@
+{
+  "os": "macOS-26.5.2-x86_64-i386-64bit",
+  "python": "CPython 3.12.13",
+  "startedAt": "2026-08-17T10:59:07.604050Z",
+  "program": "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py",
+  "codePath": "insect_detection/main.py",
+  "codePathLocal": "main.py",
+  "git": {
+    "remote": "https://github.com/RHS-Wisley-Bug-Watch/RHS-Pests.git",
+    "commit": "acb3d2b41cd7279c2b635cfe36f12be8abc19106"
+  },
+  "email": "ernestucheze@gmail.com",
+  "root": "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection",
+  "host": "Ernests-MacBook-Pro.local",
+  "executable": "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/bin/python3",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "disk": {
+    "/": {
+      "total": "1000240963584",
+      "used": "905965703168"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "writerId": "jtb5zj2uvbuif5c8ut8nwkbpf3zm7q0c"
+}

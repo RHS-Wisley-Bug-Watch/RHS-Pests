@@ -1,0 +1,66 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            jtb5zj2uvbuif5c8ut8nwkbpf3zm7q0c:
+                codePath: insect_detection/main.py
+                codePathLocal: main.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "1000240963584"
+                        used: "905965703168"
+                email: ernestucheze@gmail.com
+                executable: /Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/bin/python3
+                git:
+                    commit: acb3d2b41cd7279c2b635cfe36f12be8abc19106
+                    remote: https://github.com/RHS-Wisley-Bug-Watch/RHS-Pests.git
+                host: Ernests-MacBook-Pro.local
+                memory:
+                    total: "17179869184"
+                os: macOS-26.5.2-x86_64-i386-64bit
+                program: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py
+                python: CPython 3.12.13
+                root: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection
+                startedAt: "2026-08-17T10:59:07.604050Z"
+                writerId: jtb5zj2uvbuif5c8ut8nwkbpf3zm7q0c
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 2
+                - 3
+                - 13
+                - 16
+                - 78
+            "4": 3.12.13
+            "5": 0.28.2
+            "12": 0.28.2
+            "13": darwin-x86_64
+architecture:
+    value: ResNet18
+batch_size:
+    value: 32
+epochs:
+    value: 25
+frozen_layers:
+    value: true
+learning_rate:
+    value: 0.001
+notes:
+    value: Retaining learning rate, reverting augmentations, drastically lowering threshold. Model 4.
+num_augmentations:
+    value: 6
+threshold:
+    value: 0.25

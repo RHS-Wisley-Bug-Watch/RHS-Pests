@@ -1,0 +1,45 @@
+
+Starting experiment: LR-0.001_Aug-6_Thresh-0.25
+Notes: Retaining learning rate, reverting augmentations, drastically lowering threshold. Model 4.
+
+Loading CSV: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/Filtered_Bugs_Min4_Frac0.55_Gold-x.csv
+Total rows found: 483
+Processing 72 Insect images...
+Processing 401 Other images...
+TRAIN SET: 360 Insects | 320 Others
+TEST SET:  95 Insects | 81 Others
+Initializing ResNet18 model...
+
+Starting training for 25 epochs...
+Epoch 1/25 | Train Loss: 0.6461 | Test Loss: 0.4842 | Test Acc: 59.66%
+Epoch 2/25 | Train Loss: 0.4822 | Test Loss: 0.4064 | Test Acc: 72.16%
+Epoch 3/25 | Train Loss: 0.4034 | Test Loss: 0.3669 | Test Acc: 77.84%
+Epoch 4/25 | Train Loss: 0.3963 | Test Loss: 0.3624 | Test Acc: 84.66%
+Epoch 5/25 | Train Loss: 0.3380 | Test Loss: 0.3349 | Test Acc: 80.68%
+Epoch 6/25 | Train Loss: 0.3603 | Test Loss: 0.3251 | Test Acc: 75.00%
+Epoch 7/25 | Train Loss: 0.3065 | Test Loss: 0.3091 | Test Acc: 82.95%
+Epoch 8/25 | Train Loss: 0.2851 | Test Loss: 0.3236 | Test Acc: 73.86%
+Epoch 9/25 | Train Loss: 0.3008 | Test Loss: 0.3398 | Test Acc: 68.75%
+Epoch 10/25 | Train Loss: 0.2900 | Test Loss: 0.2891 | Test Acc: 80.11%
+Epoch 11/25 | Train Loss: 0.2546 | Test Loss: 0.3085 | Test Acc: 74.43%
+Epoch 12/25 | Train Loss: 0.2826 | Test Loss: 0.3356 | Test Acc: 69.89%
+Epoch 13/25 | Train Loss: 0.3143 | Test Loss: 0.3123 | Test Acc: 73.86%
+Epoch 14/25 | Train Loss: 0.2479 | Test Loss: 0.2767 | Test Acc: 82.95%
+Epoch 15/25 | Train Loss: 0.2283 | Test Loss: 0.2858 | Test Acc: 78.41%
+Epoch 16/25 | Train Loss: 0.2257 | Test Loss: 0.3268 | Test Acc: 72.16%
+Epoch 17/25 | Train Loss: 0.2798 | Test Loss: 0.2728 | Test Acc: 83.52%
+Epoch 18/25 | Train Loss: 0.2213 | Test Loss: 0.2821 | Test Acc: 78.41%
+Epoch 19/25 | Train Loss: 0.2259 | Test Loss: 0.2620 | Test Acc: 88.07%
+Epoch 20/25 | Train Loss: 0.2103 | Test Loss: 0.2754 | Test Acc: 89.77%
+Epoch 21/25 | Train Loss: 0.2325 | Test Loss: 0.2547 | Test Acc: 86.93%
+Epoch 22/25 | Train Loss: 0.2644 | Test Loss: 0.2619 | Test Acc: 80.11%
+Epoch 23/25 | Train Loss: 0.2066 | Test Loss: 0.2546 | Test Acc: 82.95%
+Epoch 24/25 | Train Loss: 0.1944 | Test Loss: 0.2766 | Test Acc: 80.11%
+Epoch 25/25 | Train Loss: 0.1984 | Test Loss: 0.2532 | Test Acc: 85.23%
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+
+Uploading visual predictions and raw data to Weights & Biases...
+WARNING:root:Only 108 Image will be uploaded.
+Uploading Probability Table...
+Generating Density Plot and ROC Curve for W&B...
+Done! Check your W&B dashboard.

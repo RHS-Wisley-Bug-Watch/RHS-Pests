@@ -1,0 +1,19 @@
+{"time":"2026-08-17T11:57:42.330954+01:00","level":"INFO","msg":"wandb-core"}
+{"time":"2026-08-17T11:57:42.334033+01:00","level":"INFO","msg":"stream: starting","core version":"0.28.2"}
+{"time":"2026-08-17T11:57:42.451474+01:00","level":"INFO","msg":"stream: created new stream","id":"jx3w9zrv"}
+{"time":"2026-08-17T11:57:42.451804+01:00","level":"INFO","msg":"handler: started"}
+{"time":"2026-08-17T11:57:42.452065+01:00","level":"INFO","msg":"stream: started"}
+{"time":"2026-08-17T11:57:42.452465+01:00","level":"INFO","msg":"sender: started"}
+{"time":"2026-08-17T11:57:42.452466+01:00","level":"INFO","msg":"writer: started","stream_id":"jx3w9zrv"}
+{"time":"2026-08-17T11:57:43.193206+01:00","level":"INFO","msg":"filestream: sending request","total_files":1,"console_offset":0,"console_lines":2}
+{"time":"2026-08-17T11:57:43.432517+01:00","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-08-17T11:57:58.193452+01:00","level":"INFO","msg":"filestream: sending request","total_files":2,"events_offset":0,"events_lines":1,"console_offset":2,"console_lines":11,"uploaded_len":2}
+{"time":"2026-08-17T11:57:58.4342+01:00","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-08-17T11:58:01.055636+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-08-17T11:58:01.055831+01:00","level":"INFO","msg":"filestream: sending request","total_files":2,"console_offset":13,"console_lines":51,"uploaded_len":3,"complete":true,"exit_code":255}
+{"time":"2026-08-17T11:58:01.249504+01:00","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-08-17T11:58:01.249639+01:00","level":"INFO","msg":"stream: finishing up"}
+{"time":"2026-08-17T11:58:01.249674+01:00","level":"INFO","msg":"handler: closed"}
+{"time":"2026-08-17T11:58:01.250866+01:00","level":"INFO","msg":"sender: closed"}
+{"time":"2026-08-17T11:58:01.250895+01:00","level":"INFO","msg":"stream: all finished"}
+{"time":"2026-08-17T11:58:03.251897+01:00","level":"ERROR","msg":"stream: failed to shut down analytics","error":"shutdown errors: [context deadline exceeded]"}
