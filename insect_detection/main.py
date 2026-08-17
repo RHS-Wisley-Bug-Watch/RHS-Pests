@@ -14,10 +14,10 @@ EXPERIMENT_CONFIG = {
     "epochs": 25,            # How many learning iterations
     "batch_size": 32,        # How many samples it looks at at once
     "num_augmentations": 6,  # Augmenting only images with bugs in them for balance
-    "threshold": 0.4,        # Model confidence for classification
+    "threshold": 0.6,        # Model confidence for classification
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Reverting learning rate, reducing threshold slightly, reverting layers. Model 6."
+    "notes": "Iincreasing threshold slightly. Model 7."
 }
 
 BASE_DIR = os.getcwd()
