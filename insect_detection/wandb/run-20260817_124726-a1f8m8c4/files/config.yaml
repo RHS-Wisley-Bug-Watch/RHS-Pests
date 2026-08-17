@@ -1,0 +1,66 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            3qit2q27wk0y0nstmhll7g16b7vzjt0b:
+                codePath: insect_detection/main.py
+                codePathLocal: main.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "1000240963584"
+                        used: "907145605120"
+                email: ernestucheze@gmail.com
+                executable: /Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/bin/python3
+                git:
+                    commit: 1309dac0c2213083aa104aba7d95e86b8b2fe1d6
+                    remote: https://github.com/RHS-Wisley-Bug-Watch/RHS-Pests.git
+                host: Ernests-MacBook-Pro.local
+                memory:
+                    total: "17179869184"
+                os: macOS-26.5.2-x86_64-i386-64bit
+                program: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py
+                python: CPython 3.12.13
+                root: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection
+                startedAt: "2026-08-17T11:47:26.867203Z"
+                writerId: 3qit2q27wk0y0nstmhll7g16b7vzjt0b
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 2
+                - 3
+                - 13
+                - 16
+                - 78
+            "4": 3.12.13
+            "5": 0.28.2
+            "12": 0.28.2
+            "13": darwin-x86_64
+architecture:
+    value: ResNet18
+batch_size:
+    value: 32
+epochs:
+    value: 25
+frozen_layers:
+    value: true
+learning_rate:
+    value: 0.001
+notes:
+    value: Increasing threshold slightly. Model 7.
+num_augmentations:
+    value: 6
+threshold:
+    value: 0.6
