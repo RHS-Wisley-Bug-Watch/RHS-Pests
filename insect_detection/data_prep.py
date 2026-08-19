@@ -86,49 +86,44 @@ def prepare_data(csv_file, source_dir, base_dir, num_augmentations):
 
     resizer = v2.Resize((224, 224), antialias=True)
 
-    def augment_and_split(files, class_name):
+    def split_and_augment(files, class_name):
         print(f"Processing {len(files)} {class_name} images...")
-        all_variations = []
         
-        for f in files:
-            all_variations.append((f, 'orig'))
-
-            if class_name == 'Insect':
-                for i in range(num_augmentations):
-                    all_variations.append((f, f'aug_{i}'))
-                
-        random.shuffle(all_variations)
+        random.shuffle(files)
+        train_count = int(len(files) * 0.8)
+        train_raw = files[:train_count]
+        test_raw = files[train_count:]
         
-        train_count = int(len(all_variations) * 0.8)
-        train_files = all_variations[:train_count]
-        test_files = all_variations[train_count:]
-        
-        def process_and_save(item_list, subset_folder):
+        def process_and_save(raw_list, subset_folder):
             count = 0
-            for f, v_type in item_list:
+            for f in raw_list:
                 src = os.path.join(source_dir, f)
                 if not os.path.exists(src):
                     continue
                     
                 img = Image.open(src).convert('RGB')
                 
-                if v_type == 'orig':
-                    out_img = resizer(img)
-                else:
-                    out_img = augmenter(img)
-                    
-                out_name = f"{os.path.splitext(f)[0]}_{v_type}.jpg"
+                out_img = resizer(img)
+                out_name = f"{os.path.splitext(f)[0]}_orig.jpg"
                 out_path = os.path.join(base_dir, subset_folder, class_name, out_name)
                 out_img.save(out_path)
                 count += 1
+                
+                if class_name == 'Insect':
+                    for i in range(num_augmentations):
+                        out_img = augmenter(img)
+                        out_name = f"{os.path.splitext(f)[0]}_aug_{i}.jpg"
+                        out_path = os.path.join(base_dir, subset_folder, class_name, out_name)
+                        out_img.save(out_path)
+                        count += 1
             return count
 
-        copied_train = process_and_save(train_files, 'train_balanced')
-        copied_test = process_and_save(test_files, 'test')
+        copied_train = process_and_save(train_raw, 'train_balanced')
+        copied_test = process_and_save(test_raw, 'test')
         return copied_train, copied_test
 
-    train_ins, test_ins = augment_and_split(insects, 'Insect')
-    train_oth, test_oth = augment_and_split(others, 'Other')
+    train_ins, test_ins = split_and_augment(insects, 'Insect')
+    train_oth, test_oth = split_and_augment(others, 'Other')
 
     print(f"TRAIN SET: {train_ins} Insects | {train_oth} Others")
     print(f"TEST SET:  {test_ins} Insects | {test_oth} Others")

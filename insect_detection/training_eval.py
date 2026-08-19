@@ -64,17 +64,18 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
     # --- SAVE WEIGHTS ---
     weights_path = os.path.join(results_dir, "best_model.pth")
     torch.save(model.state_dict(), weights_path)
-    wandb.save(weights_path) # Upload to cloud
+    wandb.save(weights_path)
 
-    # --- UPLOAD VISUAL PREDICTIONS & RAW DATA TO W&B ---
     print("\nUploading visual predictions and raw data to Weights & Biases...")
     model.eval()
     wandb_images = [] 
     test_samples = test_ds.samples
     
     all_true_labels = []
+    all_pred_labels = []
     all_insect_probs = []
     all_other_probs = []
+    all_image_types = []
     
     with torch.no_grad():
         batch_idx = 0
@@ -94,9 +95,13 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
                     insect_prob = float(probs[i][insect_class_id])
                     other_prob = float(probs[i][other_class_id])
                     
+                    img_type = "Augmented" if "_aug_" in img_path else "Original"
+                    
                     all_true_labels.append(true_name)
+                    all_pred_labels.append(pred_name)
                     all_insect_probs.append(insect_prob)
                     all_other_probs.append(other_prob)
+                    all_image_types.append(img_type)
                     
                     try:
                         orig_img = Image.open(img_path).convert('RGB')
@@ -110,8 +115,8 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
                         draw.rectangle([0, 0, w, 30], fill="black")
                         draw.text((10, 8), label_text, fill="white")
                         
-                        caption = "CORRECT" if is_correct else "INCORRECT"
-                        wandb_images.append(wandb.Image(orig_img, caption=f"{caption}: {label_text}"))
+                        caption = f"{'CORRECT' if is_correct else 'INCORRECT'} | Type: {img_type}"
+                        wandb_images.append(wandb.Image(orig_img, caption=caption))
                     except Exception:
                         pass
             batch_idx += 1
@@ -119,9 +124,9 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
     wandb.log({"Test Set Predictions": wandb_images})
     
     print("Uploading Probability Table...")
-    prob_table = wandb.Table(columns=["True Label", "Insect Probability", "Other Probability"])
-    for t_label, i_prob, o_prob in zip(all_true_labels, all_insect_probs, all_other_probs):
-        prob_table.add_data(t_label, i_prob, o_prob)
+    prob_table = wandb.Table(columns=["True Label", "Predicted Label", "Insect Probability", "Other Probability", "Image Type"])
+    for t_label, p_label, i_prob, o_prob, img_type in zip(all_true_labels, all_pred_labels, all_insect_probs, all_other_probs, all_image_types):
+        prob_table.add_data(t_label, p_label, i_prob, o_prob, img_type)
         
     wandb.log({"Evaluation_Data": prob_table})
     

@@ -5,7 +5,7 @@ from torchvision import models
 import numpy as np
 
 def create_model(train_ds, device, learning_rate=1e-4, frozen_layers=True):
-    print("Initializing ResNet18 model...")
+    print("Initialising ResNet18 model...")
     
     insect_class_id = train_ds.class_to_idx['Insect']
     other_class_id = train_ds.class_to_idx['Other']
