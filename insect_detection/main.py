@@ -11,13 +11,13 @@ from training_eval import train_and_evaluate
 
 EXPERIMENT_CONFIG = {
     "learning_rate": 1e-5,
-    "epochs": 25,
+    "epochs": 35,
     "batch_size": 32,
     "num_augmentations": 6,
     "threshold": 0.5,
     "frozen_layers": False,
     "architecture": "ResNet18",
-    "notes": "Baseline test for the second take, slower learning and unfreezing layers."
+    "notes": "Retaining past paramters + more steps"
 }
 
 BASE_DIR = os.getcwd()
