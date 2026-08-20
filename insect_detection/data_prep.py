@@ -104,7 +104,7 @@ def prepare_data(csv_file, source_dir, base_dir, num_augmentations):
                 img = Image.open(src).convert('RGB')
                 
                 out_img = resizer(img)
-                out_name = f"{os.path.splitext(f)[0]}_orig.jpg"
+                out_name = f"{os.path.splitext(f)[0]}_original.jpg"
                 out_path = os.path.join(base_dir, subset_folder, class_name, out_name)
                 out_img.save(out_path)
                 count += 1

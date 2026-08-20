@@ -10,14 +10,14 @@ from training_eval import train_and_evaluate
 
 
 EXPERIMENT_CONFIG = {
-    "learning_rate": 1e-3,
+    "learning_rate": 1e-5,
     "epochs": 25,
     "batch_size": 32,
     "num_augmentations": 6,
     "threshold": 0.5,
-    "frozen_layers": True,
+    "frozen_layers": False,
     "architecture": "ResNet18",
-    "notes": "Model 2 wins!"
+    "notes": "Baseline test for the second take, slower learning and unfreezing layers."
 }
 
 BASE_DIR = os.getcwd()
@@ -26,7 +26,7 @@ CSV_FILE = next((p for p in CSV_CANDIDATES if os.path.exists(p)), None)
 SOURCE_DIR = os.path.join(BASE_DIR, "images")
 RESULTS_DIR = "model_results"
 
-def set_seed(seed=42):
+def set_seed(seed=67):
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
