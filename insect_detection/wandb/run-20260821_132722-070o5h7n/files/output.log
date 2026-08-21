@@ -1,0 +1,59 @@
+
+Starting experiment: LR-0.001_Aug-6_Thresh-0.5
+Notes: Using best model but checking different metrics
+
+Loading CSV: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/Filtered_Bugs_Min4_Frac0.55_Gold-x.csv
+Total rows found: 483
+Processing 72 Insect images...
+Processing 401 Other images...
+TRAIN SET: 364 Insects | 320 Others
+TEST SET:  91 Insects | 81 Others
+Initialising ResNet18 model...
+
+Starting training for 25 epochs...
+Epoch 1/25 | Train Loss: 0.6003 | Test Loss: 0.4881 | Test Acc: 73.84%
+Epoch 2/25 | Train Loss: 0.4357 | Test Loss: 0.4123 | Test Acc: 79.07%
+Epoch 3/25 | Train Loss: 0.3938 | Test Loss: 0.3970 | Test Acc: 80.23%
+Epoch 4/25 | Train Loss: 0.3459 | Test Loss: 0.3738 | Test Acc: 81.98%
+Epoch 5/25 | Train Loss: 0.3130 | Test Loss: 0.3537 | Test Acc: 84.30%
+Epoch 6/25 | Train Loss: 0.3067 | Test Loss: 0.3335 | Test Acc: 81.98%
+Epoch 7/25 | Train Loss: 0.2880 | Test Loss: 0.3222 | Test Acc: 84.88%
+Epoch 8/25 | Train Loss: 0.2851 | Test Loss: 0.3105 | Test Acc: 85.47%
+Epoch 9/25 | Train Loss: 0.2713 | Test Loss: 0.3176 | Test Acc: 83.72%
+Epoch 10/25 | Train Loss: 0.2716 | Test Loss: 0.3391 | Test Acc: 82.56%
+Epoch 11/25 | Train Loss: 0.2451 | Test Loss: 0.3104 | Test Acc: 84.30%
+Epoch 12/25 | Train Loss: 0.2666 | Test Loss: 0.2975 | Test Acc: 86.05%
+Epoch 13/25 | Train Loss: 0.2439 | Test Loss: 0.3068 | Test Acc: 84.88%
+Epoch 14/25 | Train Loss: 0.2376 | Test Loss: 0.3119 | Test Acc: 83.14%
+Epoch 15/25 | Train Loss: 0.2473 | Test Loss: 0.3046 | Test Acc: 83.14%
+Epoch 16/25 | Train Loss: 0.2138 | Test Loss: 0.2820 | Test Acc: 86.05%
+Epoch 17/25 | Train Loss: 0.2186 | Test Loss: 0.2867 | Test Acc: 86.63%
+Epoch 18/25 | Train Loss: 0.2108 | Test Loss: 0.2787 | Test Acc: 86.05%
+Epoch 19/25 | Train Loss: 0.2312 | Test Loss: 0.3411 | Test Acc: 84.30%
+Epoch 20/25 | Train Loss: 0.2318 | Test Loss: 0.2760 | Test Acc: 86.05%
+Epoch 21/25 | Train Loss: 0.2374 | Test Loss: 0.2762 | Test Acc: 84.30%
+Epoch 22/25 | Train Loss: 0.2150 | Test Loss: 0.2950 | Test Acc: 84.30%
+Epoch 23/25 | Train Loss: 0.2095 | Test Loss: 0.3254 | Test Acc: 83.72%
+Epoch 24/25 | Train Loss: 0.1965 | Test Loss: 0.2788 | Test Acc: 87.21%
+Epoch 25/25 | Train Loss: 0.1932 | Test Loss: 0.2711 | Test Acc: 87.21%
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+
+Uploading visual predictions and raw data to Weights & Biases...
+WARNING:root:Only 108 Image will be uploaded.
+Uploading Probability Table...
+Traceback (most recent call last):
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 85, in <module>
+    main()
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 67, in main
+    train_and_evaluate(
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/training_eval.py", line 130, in train_and_evaluate
+    prob_table.add_data(t_label, p_label, i_prob, o_prob, img_type)
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/wandb/sdk/data_types/table_decorators.py", line 41, in wrapper
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/wandb/sdk/data_types/table_decorators.py", line 57, in wrapper
+    res = method(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/wandb/sdk/data_types/table.py", line 609, in add_data
+    raise ValueError(
+ValueError: This table expects 6 columns: ['True Label', 'Predicted Label', 'Insect Probability', 'Other Probability', 'Image Type', 'Is Correct'], found 5

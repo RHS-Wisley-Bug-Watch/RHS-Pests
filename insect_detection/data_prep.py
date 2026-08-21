@@ -90,7 +90,7 @@ def prepare_data(csv_file, source_dir, base_dir, num_augmentations):
         print(f"Processing {len(files)} {class_name} images...")
         
         random.shuffle(files)
-        train_count = int(len(files) * 0.8)
+        train_count = int(len(files) * 0.7)
         train_raw = files[:train_count]
         test_raw = files[train_count:]
         

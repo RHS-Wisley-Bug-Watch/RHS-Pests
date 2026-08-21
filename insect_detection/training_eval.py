@@ -127,8 +127,8 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
     prob_table = wandb.Table(columns=["True Label", "Predicted Label", "Insect Probability", "Other Probability", "Image Type", "Is Correct"])
     for t_label, p_label, i_prob, o_prob, img_type in zip(all_true_labels, all_pred_labels, all_insect_probs, all_other_probs, all_image_types):
         is_correct = 1 if t_label == p_label else 0
-        prob_table.add_data(t_label, p_label, i_prob, o_prob, img_type)
-        
+        prob_table.add_data(t_label, p_label, i_prob, o_prob, img_type, is_correct)
+
     wandb.log({"Evaluation_Data": prob_table})
     
     print("Generating Density Plot and ROC Curve for W&B...")
