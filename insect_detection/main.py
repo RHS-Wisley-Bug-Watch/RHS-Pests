@@ -10,14 +10,14 @@ from training_eval import train_and_evaluate
 
 
 EXPERIMENT_CONFIG = {
-    "learning_rate": 1e-5,
-    "epochs": 35,
+    "learning_rate": 1e-3,
+    "epochs": 25,
     "batch_size": 32,
     "num_augmentations": 6,
     "threshold": 0.5,
-    "frozen_layers": False,
+    "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Retaining past paramters + more steps"
+    "notes": "Using best model but checking different metrics"
 }
 
 BASE_DIR = os.getcwd()
