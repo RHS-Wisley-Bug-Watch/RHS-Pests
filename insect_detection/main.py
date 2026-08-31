@@ -42,9 +42,6 @@ def main():
     set_seed(42)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # ==========================================
-    # INITIALIZE WEIGHTS & BIASES
-    # ==========================================
     run_name = f"LR-{EXPERIMENT_CONFIG['learning_rate']}_Aug-{EXPERIMENT_CONFIG['num_augmentations']}_Thresh-{EXPERIMENT_CONFIG['threshold']}"
     
     wandb.init(

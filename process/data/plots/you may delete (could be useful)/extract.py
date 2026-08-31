@@ -218,7 +218,7 @@ def extract_rows():
 
     output_data = []
 
-    # 2 & 3. Process each target in the EXACT order of your SEARCH_LIST (Keeping Duplicates)
+    # 2 & 3. Process each target in the EXACT order of your SEARCH_LIST (keeping Duplicates)
     for target in SEARCH_LIST:
         if isinstance(target, int) or (isinstance(target, str) and target.isdigit()):
             mask = df['SubID'] == int(target)
