@@ -14,7 +14,7 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
     print(f"\nStarting training for {epochs} epochs...")
 
     for epoch in range(epochs):
-        # --- TRAINING PHASE ---
+        # --- Training ---
         model.train()
         total_loss = 0
         for x, y in train_loader:
@@ -28,7 +28,7 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
             
         train_loss = total_loss / len(train_loader)
         
-        # --- EVALUATION PHASE ---
+        # --- Evaluation ---
         model.eval()
         test_loss = 0
         correct = 0
@@ -61,7 +61,7 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
             "Epoch": epoch + 1
         })
 
-    # --- SAVE WEIGHTS ---
+    # --- Saving Weights ---
     weights_path = os.path.join(results_dir, "best_model.pth")
     torch.save(model.state_dict(), weights_path)
     wandb.save(weights_path)
@@ -169,4 +169,4 @@ def train_and_evaluate(model, criterion, optimizer, train_loader, test_loader, t
         wandb.log({"ROC Curve": wandb.Image(plt)})
         plt.close()
 
-    print("Done! Check your W&B dashboard.")
+    print("Process complete. Uploaded graphs to W&B.")

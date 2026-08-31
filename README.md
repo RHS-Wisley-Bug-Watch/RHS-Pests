@@ -8,21 +8,22 @@ The project uses a ResNet18 Convolutional Neural Network (CNN) and logs all expe
 
 ## Setup
 
-1. Install Dependencies
+**1. Install Dependencies**
 
 Ensure you have Python 3.9+ and `uv` installed on your machine.
 
 To set up your environment and install all required dependencies, run `uv sync`.
 
-2. Weights & Biases Setup
+**2. Weights & Biases Setup**
 
 This project relies on W&B to track experiments.
 Ensure you have an account at wandb.
 Log in with ``wandb login`` and paste your API key when prompted.
 
-3. Data Preparation
+**3. Data Preparation**
+
 Place all the images from Zooniverse into the ``images`` folder.
-Ensure the filtered CSV (i.e., Filtered_Bugs_Min4_Frac0.55_Gold-x.csv) is in the root directory. The script expects columns containing Filenames. You must manually edit the csv to have the correct labels (ground truth) indicating Insect or Other/Unknown.
+Ensure the filtered CSV (i.e., `Filtered_Bugs_Min4_Frac0.55_Gold-x.csv`) is in the root directory. The script expects columns containing filenames. You must manually edit the csv to have the correct labels (ground truth) indicating Insect or Other/Unknown.
 
 
 ## Project Structure
@@ -35,10 +36,10 @@ Ensure the filtered CSV (i.e., Filtered_Bugs_Min4_Frac0.55_Gold-x.csv) is in the
 `submitjobs.sh`: This becomes the only script you need to run presuming you have cloned your repo on the HEC. You will need to add the `git` module and install `uv`.
 
 ### High End Compute Commands and Scripts
-- Login with `ssh <username>@wayland-2022.hec.lancs.ac.uk`.
-- Create a shell script with `nano submitjobs.sh`.
-- Run with `sbatch submitjobs.sh`.
-- View status with `sacct`.
+1. Login with `ssh <username>@wayland-2022.hec.lancs.ac.uk`.
+2. Create a shell script with `nano submitjobs.sh`.
+3. Run with `sbatch submitjobs.sh`.
+4. View status with `sacct`.
 
 Copy and paste this code into the shell script:
 
@@ -82,9 +83,9 @@ EXPERIMENT_CONFIG = {
     "learning_rate": 1e-4,   # Speed of learning
     "epochs": 25,            # Total training cycles
     "batch_size": 32,        # Images processed simultaneously
-    "num_augmentations": 6,  # Number of copies generated per insect
-    "threshold": 0.5,        # Confidence required to predict "Insect" (0.0 to 1.0)
-    "frozen_layers": True,   # Set False to ...
+    "num_augmentations": 6,  # Number of images generated per image with (an) insect(s)
+    "threshold": 0.5,        # Confidence required to predict "Insect"
+    "frozen_layers": True,   # Set to false to skip weight updates during backpropagation
     "notes": "Testing baseline learning rate."
 }
 ```

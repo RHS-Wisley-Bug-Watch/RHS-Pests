@@ -1,13 +1,14 @@
 *.csv
 *.jpeg
 *.jpg
-ResultImages/
-ResultImages_4_0.7_1/
-ResultImages_2_0.5/
-ResultImages_4_0.55/
+Gold Dataset_Marked/
+Gold Dataset/
+images/
+test/
+train_balanced/
+model_results/
+wandb/
 
-
-# Python-generated files
 __pycache__/
 *.py[oc]
 build/
@@ -15,5 +16,4 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
 .venv

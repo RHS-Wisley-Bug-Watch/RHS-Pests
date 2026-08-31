@@ -23,7 +23,7 @@ EXPERIMENT_CONFIG = {
 BASE_DIR = os.getcwd()
 CSV_CANDIDATES = [os.path.join(BASE_DIR, "Filtered_Bugs_Min4_Frac0.55_Gold-x.csv")]
 CSV_FILE = next((p for p in CSV_CANDIDATES if os.path.exists(p)), None)
-SOURCE_DIR = os.path.join(BASE_DIR, "images")
+SOURCE_DIR = os.path.join(BASE_DIR, "images") # can be changed to point to a local OneDrive folder
 RESULTS_DIR = "model_results"
 
 def set_seed(seed=67):

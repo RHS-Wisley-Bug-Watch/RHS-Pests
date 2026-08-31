@@ -1,3 +1,9 @@
+"""
+Little script that helps with updating the filtered spreadsheet with "No Bug" images. 
+It will print the filenames and their corresponding row numbers in the original CSV, 
+which can be used to update the filtered spreadsheet.
+"""
+
 import pandas as pd
 import os
 
