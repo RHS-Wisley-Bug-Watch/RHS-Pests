@@ -1,0 +1,49 @@
+
+Starting experiment: LR-0.001_Aug-6_Thresh-0.5
+Notes: Chaning to 70/30 split
+
+Loading CSV: /Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/Filtered_Bugs_Min4_Frac0.55_Gold-x.csv
+Total rows found: 483
+Processing 72 Insect images...
+Processing 401 Other images...
+TRAIN SET: 315 Insects | 280 Others
+TEST SET:  140 Insects | 121 Others
+Initialising ResNet18 model...
+
+Starting training for 25 epochs...
+Traceback (most recent call last):
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 85, in <module>
+    main()
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/main.py", line 67, in main
+    train_and_evaluate(
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/insect_detection/training_eval.py", line 23, in train_and_evaluate
+    out = model(x)
+          ^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 285, in forward
+    return self._forward_impl(x)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 271, in _forward_impl
+    x = self.maxpool(x)
+        ^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/modules/pooling.py", line 164, in forward
+    return F.max_pool2d(input, self.kernel_size, self.stride,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/_jit_internal.py", line 499, in fn
+    return if_false(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ernest/Desktop/RHS Wisley Bug Watch/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 796, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

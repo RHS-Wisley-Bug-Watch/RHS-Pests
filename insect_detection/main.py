@@ -17,7 +17,7 @@ EXPERIMENT_CONFIG = {
     "threshold": 0.5,
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Chaning to 70/30 split"
+    "notes": "Changing to 70/30 split"
 }
 
 BASE_DIR = os.getcwd()
