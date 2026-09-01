@@ -29,7 +29,7 @@ Ensure the filtered CSV (i.e., `Filtered_Bugs_Min4_Frac0.55_Gold-x.csv`) is in t
 ## Project Structure
 
 ### Scripts to Run
-`main.py`: This is the only script you need to run. It contains the EXPERIMENT_CONFIG dictionary where you can tweak the parameters. You might need to `cd` into the `insect_detection` folder first.
+`main.py`: This is the only script you need to run. It contains the `EXPERIMENT_CONFIG` dictionary where you can tweak the parameters. You might need to `cd` into the `insect_detection` folder first.
 
 *Alternatively, with the HEC:*
 
