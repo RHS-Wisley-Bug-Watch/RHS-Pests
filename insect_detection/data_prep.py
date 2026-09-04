@@ -122,10 +122,10 @@ def prepare_data(csv_file, source_dir, base_dir, num_augmentations):
                 saturation=(0.5, 1.5),
                 hue=0.05
             ),
-            v2.GaussianBlur(
-                kernel_size=(3, 5),
-                sigma=(0.1, 1.0)
-            ),
+            # v2.GaussianBlur(
+            #     kernel_size=(3, 5),
+            #     sigma=(0.1, 1.0)
+            # ),
             v2.Lambda(lambda img: img)
         ]),
 

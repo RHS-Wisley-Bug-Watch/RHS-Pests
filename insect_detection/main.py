@@ -10,14 +10,14 @@ from training_eval import train_and_evaluate
 
 
 EXPERIMENT_CONFIG = {
-    "learning_rate": 1e-3,
-    "epochs": 25,
+    "learning_rate": 1e-4,
+    "epochs": 30,
     "batch_size": 32,
-    "num_augmentations": 6,
+    "num_augmentations": 3,
     "threshold": 0.5,
     "frozen_layers": True,
     "architecture": "ResNet18",
-    "notes": "Changing to 70/30 split"
+    "notes": "Removed blur augmentation."
 }
 
 BASE_DIR = os.getcwd()
